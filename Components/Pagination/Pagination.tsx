@@ -11,9 +11,8 @@ const Pagination= () => {
   const itemsPerPage = 10;
   const totalPages = Math.ceil(taskData.length / itemsPerPage);
 
-  // Calculate the range of visible pagination items
   const visiblePages = useMemo(() => {
-    const maxVisiblePages = 5; // Adjust the number of visible pages as needed
+    const maxVisiblePages = 5; 
     const start = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
     const end = Math.min(totalPages, start + maxVisiblePages - 1);
     return Array.from({ length: end - start + 1 }, (_, index) => start + index);
@@ -39,10 +38,6 @@ const Pagination= () => {
     totalPages > 1 && (
       <div className='flex border-t border-solid border-b-gray-300 items-center justify-between flex-1 pt-4 h-[7vh]'>
         <div onClick={handlePreviousPage} className='flex gap-2 cursor-pointer items-center rounded-lg px-3 py-2'>
-          {/* <div>
-           <span><FaArrowLeft /> Previous</span> 
-
-          </div> */}
               <div className="flex items-center">
       <span className="mr-1">
         <FaArrowLeft />

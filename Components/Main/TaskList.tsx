@@ -2,6 +2,7 @@ import { appContext } from '@/ContextApi/AppContext';
 import Image from 'next/image';
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
+import { CircleLoader, ScaleLoader } from 'react-spinners';
 
 // Define an interface for a task item
 interface TaskItem {
@@ -34,6 +35,8 @@ const TaskList = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = currentPage * itemsPerPage;
   const displayData = taskData.slice(startIndex, endIndex);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const getFromNow = (date: string, time: string) => {
     const targetDate = new Date(`${date} ${time}`).valueOf();
@@ -67,10 +70,25 @@ const TaskList = () => {
     setEditTaskStatus(false);
     setAddTaskStatus(false);
   };
+  useEffect(() => {
+    if (displayData.length > 0) {
+      setIsLoading(false);
+    }
+  }, [displayData]);
+
 
   return (
+    
     <div>
-      <div className='font-semibold'>Your Tasks</div>
+    <div className='font-semibold'>Your Tasks</div>
+    {isLoading ? (
+      <div className='text-center mt-4'>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+      <CircleLoader color='blue' loading={isLoading} size={50} />
+    </div>
+
+      </div>
+    ) : (
       <div className='no-scroll-bar overflow-y-auto sm:h-[50vh]'>
         {displayData.map((item) => (
           <div
@@ -99,7 +117,10 @@ const TaskList = () => {
           </div>
         ))}
       </div>
-    </div>
+    )}
+  </div>
+
+
   );
 };
 

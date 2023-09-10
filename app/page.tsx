@@ -1,3 +1,4 @@
+import Footer from '@/Components/Footer/Footer';
 import TaskDashboard from '@/Components/Main/TaskDashbord';
 import TaskSideBar from '@/Components/Main/TaskSideBar';
 import Navbar from '@/Components/Navbar/Navbar'
@@ -17,10 +18,11 @@ export default function Home() {
     </div>
     <div className='flex w-10/12 mt-2 overflow-x-hidden overflow-y-hidden'>
       <Pagination/>
-      <div className='hidden sm:flex w-4/12'>
-        {/*  */}
-      </div>
     </div>
+    <div>
+        <Footer/>
+      </div>
+
   </main>
 
   )
