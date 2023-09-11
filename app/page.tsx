@@ -19,10 +19,11 @@ export default function Home() {
     </div>
     <div className='flex w-10/12 mt-2 overflow-x-hidden overflow-y-hidden'>
       <Pagination/>
+
     </div>
-    <div>
+    {/* <div>
         <Footer/>
-      </div>
+      </div> */}
 
   </main>
 
