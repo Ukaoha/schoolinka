@@ -125,10 +125,11 @@ const TaskList = () => {
         ))}
       </div>
     )}
-
-<div onClick={AddTaskActivate} className='flex lg:hidden items-center justify-between h-10 rounded-[.35rem] px-4 border-2 border-gray-400 absolute bottom-0 left-0 w-full cursor-pointer bg-gray-100 hover:bg-gray-200'>
+<div className='mt-10'>
+<div onClick={AddTaskActivate} className='flex lg:hidden items-center justify-between h-10 rounded-[.35rem]   px-4 border-2 border-gray-400 relative bottom-0 left-0 w-full cursor-pointer bg-gray-100 hover:bg-gray-200'>
                 <span>Input task</span>
                 <FaMicrophone/>
+            </div>
             </div>
 
 

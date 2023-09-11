@@ -21,9 +21,9 @@ export default function Home() {
       <Pagination/>
 
     </div>
-    {/* <div>
+    <div>
         <Footer/>
-      </div> */}
+      </div>
 
   </main>
 
