@@ -31,7 +31,7 @@ const AddTaskModal = () => {
       alarmMin: alarm ? 10 : 0,
       completed: false,
     });
-    toast.success('Task edited successfully', {
+    toast.success('Task created successfully', {
         position: toast.POSITION.TOP_RIGHT, 
         autoClose: 2000, 
       });
