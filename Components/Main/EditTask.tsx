@@ -5,6 +5,9 @@ import Button from './Button';
 import { appContext } from '@/ContextApi/AppContext';
 import Image from 'next/image';
 import { FaBell, FaCalendar, FaClock } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
+
 
 const EditTask = () => {
     const {
@@ -37,6 +40,7 @@ const EditTask = () => {
     };
 
     const removeAlarm = () => {
+
         setAlarm(false);
     };
 
@@ -49,6 +53,11 @@ const EditTask = () => {
             alarmMin: alarm ? 10 : 0,
             completed: false,
         });
+        toast.success('Task edited successfully', {
+            position: toast.POSITION.TOP_RIGHT, 
+            autoClose: 2000, 
+          });
+
 
         setTimeout(() => {
             setEditTaskStatus(false);

@@ -3,10 +3,14 @@ import React, { useContext, useState } from 'react'
 import MonthCalender from './MonthCalender'
 import TaskList from './TaskList'
 import { appContext } from '@/ContextApi/AppContext' 
+import AddTaskModal from '../Modals/AddTaskModal'
+import EditTaskModal from '../Modals/EditTaskModal'
+import ViewTaskModal from '../Modals/ViewTaskModal'
 
 const TaskDashboard = () => {
 
-  const {taskData, month, year, selectedDate} = useContext(appContext)
+  const {taskData, addTaskStatus, editTaskStatus, viewTaskStatus, month, year, selectedDate} = useContext(appContext)
+
 
   const [string, setString] = useState(new Date().getHours() < 12 ? "Morning" : new Date().getHours() < 18 ? "Afternoon" : "Evening")
   return (
@@ -19,6 +23,10 @@ const TaskDashboard = () => {
       }
       <MonthCalender month={month} year={year} />
       <TaskList />
+      {addTaskStatus && <AddTaskModal />}
+      {editTaskStatus && <EditTaskModal />}
+      {viewTaskStatus && <ViewTaskModal />}
+
     </div>
   )
 }

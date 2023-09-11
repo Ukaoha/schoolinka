@@ -1,8 +1,8 @@
 import { appContext } from '@/ContextApi/AppContext';
 import Image from 'next/image';
 import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { FaCheck } from 'react-icons/fa';
-import { CircleLoader, ScaleLoader } from 'react-spinners';
+import { FaCheck, FaMicrophone } from 'react-icons/fa';
+import { CircleLoader } from 'react-spinners';
 
 // Define an interface for a task item
 interface TaskItem {
@@ -18,13 +18,11 @@ const TaskList = () => {
   const {
     taskData,
     currentPage,
-    selectedDate,
     updateTaskCompleted,
     setSelectedItem,
     setEditTaskStatus,
     setViewTaskStatus,
     setAddTaskStatus,
-    setSelectedDate,
     nextMonth,
     previousMonth,
     goToToday,
@@ -36,7 +34,6 @@ const TaskList = () => {
   const endIndex = currentPage * itemsPerPage;
   const displayData = taskData.slice(startIndex, endIndex);
   const [isLoading, setIsLoading] = useState(true);
-
 
   const getFromNow = (date: string, time: string) => {
     const targetDate = new Date(`${date} ${time}`).valueOf();
@@ -52,6 +49,18 @@ const TaskList = () => {
     } else {
       return `${Math.floor(remainingTime / 86400)} Days`;
     }
+  };
+
+  const ViewTaskActivate = () => {
+    setEditTaskStatus(false);
+    setViewTaskStatus(true);
+    setAddTaskStatus(false);
+  };
+
+  const AddTaskActivate = () => {
+    setEditTaskStatus(false);
+    setViewTaskStatus(false);
+    setAddTaskStatus(true);
   };
 
   const handleCompletedUpdate = (e: ChangeEvent<HTMLInputElement>, id: number) => {
@@ -70,23 +79,21 @@ const TaskList = () => {
     setEditTaskStatus(false);
     setAddTaskStatus(false);
   };
+
   useEffect(() => {
     if (displayData.length > 0) {
       setIsLoading(false);
     }
   }, [displayData]);
 
-
   return (
-    
     <div>
     <div className='font-semibold'>Your Tasks</div>
     {isLoading ? (
       <div className='text-center mt-4'>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
-      <CircleLoader color='blue' loading={isLoading} size={50} />
-    </div>
-
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+          <CircleLoader color='blue' loading={isLoading} size={50} />
+        </div>
       </div>
     ) : (
       <div className='no-scroll-bar overflow-y-auto sm:h-[50vh]'>
@@ -105,7 +112,7 @@ const TaskList = () => {
                   type='checkbox'
                 />
                 <div className='absolute h-4 w-4 justify-center items-center hidden peer-checked:flex pointer-events-none'>
-                  <FaCheck className='flex fill-blue-300'/>
+                  <FaCheck className='flex fill-blue-300' />
                 </div>
               </div>
               <div>
@@ -118,8 +125,13 @@ const TaskList = () => {
         ))}
       </div>
     )}
-  </div>
 
+    <div onClick={AddTaskActivate} className='lg:hidden fixed  left-0 w-full h-10 bg-gray-100 hover:bg-gray-200 border-t-2 border-gray-400 px-4 flex items-center justify-between rounded-[.35rem] cursor-pointer'>
+  <span>Input task</span>
+  <FaMicrophone />
+</div>
+
+  </div>
 
   );
 };

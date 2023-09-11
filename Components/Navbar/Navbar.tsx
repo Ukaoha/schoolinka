@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
-import { FaCog } from 'react-icons/fa';
+import { FaBars, FaCog } from 'react-icons/fa';
 import { MdNotifications } from 'react-icons/md';
 
 const Navbar = () => {
@@ -26,8 +26,9 @@ const Navbar = () => {
           <Link href={'/'}></Link>
         </div>
         <div className='flex items-center gap-3'>
-          <div className="w-12 h-12 rounded-full overflow-hidden">
-            <img src={"/next.svg"} alt='Profile' className="w-full h-full object-cover" />
+          <div className="w-12 h-8 rounded-full overflow-hidden">
+          <FaBars size={24}  />
+
           </div>
         </div>
       </nav>

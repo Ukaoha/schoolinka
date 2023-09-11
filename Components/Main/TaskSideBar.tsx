@@ -1,12 +1,11 @@
 'use client'
 import React, { useContext } from 'react'
 import Calendar from './Calenda'
+import { appContext } from '@/ContextApi/AppContext' 
+import CreateTaskBtn from './CreateTaskBtn'
 import AddTask from './AddTask'
 import EditTask from './EditTask'
 import ViewTask from './ViewTask'
-import { appContext } from '@/ContextApi/AppContext' 
-import CreateTaskBtn from './CreateTaskBtn'
-
 const TaskSideBar = () => {
 
     const { taskData, year, month, addTaskStatus, viewTaskStatus, editTaskStatus } = useContext(appContext);
@@ -18,6 +17,8 @@ const TaskSideBar = () => {
         {addTaskStatus && <AddTask />}
         {editTaskStatus && <EditTask />}
         {viewTaskStatus && <ViewTask />}
+
+
     </div>
   )
 }

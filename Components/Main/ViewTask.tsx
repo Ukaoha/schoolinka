@@ -4,6 +4,9 @@ import Button from '@/Components/Main/Button'
 import { appContext } from '@/ContextApi/AppContext';
 import Image from 'next/image';
 import { FaCalendar, FaClock } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
+
 
 const ViewTask = () => {
     const { taskData, currentPage, setCurrentPage, setAddTaskStatus, setEditTaskStatus, setViewTaskStatus, goToToday, deleteTask, selectedItem, } = useContext(appContext);
@@ -30,6 +33,11 @@ const ViewTask = () => {
         } else {
             deleteTask(selectedItem?.id)
         }
+        toast.success('Task deleted  successfully', {
+            position: toast.POSITION.TOP_RIGHT, 
+            autoClose: 2000, 
+          });
+
         setTimeout(() => {
             setViewTaskStatus(() => false)
         }, 1000);
@@ -60,14 +68,15 @@ const ViewTask = () => {
             </div>
         </div>
         <div className='flex flex-row mx-4 justify-between mt-8 gap-4'>
-            <Button 
-            title='Delete'
-            color='bg-white'
-            text='text-gray-800'
-            border='border'
-            borderColor='border-gray-600'
-            action={removeTask}
-            />
+        <Button 
+                    title='Delete'
+                    color='bg-red-600'
+                    text='text-white'
+                    borderColor='border-gray-600'
+                    // hoverColor='bg-red-700'
+                    action={removeTask}
+                    />
+
             <Button 
             title='Edit'
             action={goToEdit}
