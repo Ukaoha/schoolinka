@@ -126,10 +126,11 @@ const TaskList = () => {
       </div>
     )}
 
-    <div onClick={AddTaskActivate} className='lg:hidden fixed  left-0 w-full h-10 bg-gray-100 hover:bg-gray-200 border-t-2 border-gray-400 px-4 flex items-center justify-between rounded-[.35rem] cursor-pointer'>
-  <span>Input task</span>
-  <FaMicrophone />
-</div>
+<div onClick={AddTaskActivate} className='flex lg:hidden items-center justify-between h-10 rounded-[.35rem] px-4 border-2 border-gray-400 absolute bottom-0 left-0 w-full cursor-pointer bg-gray-100 hover:bg-gray-200'>
+                <span>Input task</span>
+                <FaMicrophone/>
+            </div>
+
 
   </div>
 
